@@ -1,10 +1,12 @@
-name: kursach7
+name: FoodDelivery
 
 on:
   push:
-    branches: [kursach7]
+    branches:
+      - forOKFKS
   pull_request:
-    branches: [kursach7]
+    branches:
+      - forOKFKS
 
 jobs:
   CheckErrors:
@@ -18,15 +20,12 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Restore Nuget
-      run: nuget restore OrgManagmentApp.sln
+      run: nuget restore FoodDelivery.sln
 
     - name: Build project
       run: |
-        msbuild OrgManagmentApp.sln /p:Configuration=Release
+        msbuild FoodDelivery.sln /p:Configuration=Release
 
-    - name: Code Analysis
+    - name: Code Analysys
       run: |
-        msbuild OrgManagmentApp.sln /p:Configuration=Release /p:RunCodeAnalysis=true
-     
-    - name: Linter
-      uses: docker://github/super-linter:v2.1.0
+        msbuild FoodDelivery.sln /p:Configuration=Release /p:RunCodeAnalysis=true
