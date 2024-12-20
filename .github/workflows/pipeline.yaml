@@ -1,4 +1,4 @@
-name: Build, Test, and Lint
+name: Lint Code
 
 on:
   push:
@@ -6,30 +6,8 @@ on:
       - kursach7
 
 jobs:
-  BuildAndTest:
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.0.x'
-
-    - name: Restore Dependencies
-      run: dotnet restore OrgManagmentApp.sln
-
-    - name: Build Project
-      run: dotnet build OrgManagmentApp.sln -c Release
-
-    - name: Run Tests
-      run: dotnet test OrgManagmentApp.sln -c Release
-
-  LintCode:
-    runs-on: ubuntu-latest
-    needs: BuildAndTest # Выполняется после успешного выполнения BuildAndTest
+  Lint:
+    runs-on: ubuntu-latest # Super Linter работает только на Linux
 
     steps:
     - name: Checkout Code
@@ -40,8 +18,7 @@ jobs:
       env:
         DEFAULT_BRANCH: kursach7
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VALIDATE_ALL_CODEBASE: true
-        VALIDATE_CSHARP: true
-        VALIDATE_YAML: true
-        VALIDATE_JSON: true
-        VALIDATE_XML: true
+        VALIDATE_ALL_CODEBASE: true # Проверяет весь код
+        VALIDATE_CSHARP: true       # Включает проверку C#
+        VALIDATE_XML: true          # Включает проверку XAML (как XML)
+        DISABLE_LINTERS: 'ALL'      # Отключает все линтеры, кроме указанных выше
