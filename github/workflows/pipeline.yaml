@@ -1,31 +1,40 @@
-name: FoodDelivery
+name: kursach7
 
 on:
-  push:
-    branches:
-      - forOKFKS
-  pull_request:
-    branches:
-      - forOKFKS
+  push
+  
 
 jobs:
   CheckErrors:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Download Code
       uses: actions/checkout@v2
 
+    - name: .Net5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version:'5.0.x'
+
+    - name: restore
+      run: dotnet restore
+
+    
+
     - name: Download .Net
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Restore Nuget
-      run: nuget restore FoodDelivery.sln
+      run: nuget restore OrgManagmentApp.sln
 
     - name: Build project
       run: |
-        msbuild FoodDelivery.sln /p:Configuration=Release
+        dotnet built -c Release --no-restore /p:Configuration=Release
 
-    - name: Code Analysys
+    - name: Code Analysis
       run: |
-        msbuild FoodDelivery.sln /p:Configuration=Release /p:RunCodeAnalysis=true
+        msbuild OrgManagmentApp.sln /p:Configuration=Release /p:RunCodeAnalysis=true
+     
+    - name: Linter
+      uses: docker://github/super-linter:v2.1.0
