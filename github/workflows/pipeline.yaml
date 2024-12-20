@@ -1,40 +1,35 @@
-name: kursach7
+name: Build and Test
 
 on:
-  push
-  
+  push:
+    branches:
+      - kursach7
 
 jobs:
   CheckErrors:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download Code
+    - name: Checkout Code
       uses: actions/checkout@v2
 
-    - name: .Net5
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version:'5.0.x'
+        dotnet-version: '5.0.x'
 
-    - name: restore
-      run: dotnet restore
+    - name: Restore Dependencies
+      run: dotnet restore OrgManagmentApp.sln
 
-    
+    - name: Build Project
+      run: dotnet build OrgManagmentApp.sln -c Release --no-restore
 
-    - name: Download .Net
-      uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Restore Nuget
-      run: nuget restore OrgManagmentApp.sln
-
-    - name: Build project
-      run: |
-        dotnet built -c Release --no-restore /p:Configuration=Release
+    - name: Run Tests
+      run: dotnet test OrgManagmentApp.sln -c Release --no-build
 
     - name: Code Analysis
       run: |
         msbuild OrgManagmentApp.sln /p:Configuration=Release /p:RunCodeAnalysis=true
-     
+
     - name: Linter
-      uses: docker://github/super-linter:v2.1.0
+      uses: github/super-linter@v4
