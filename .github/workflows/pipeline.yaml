@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build, Test, and Lint
 
 on:
   push:
@@ -26,3 +26,14 @@ jobs:
 
     - name: Run Tests
       run: dotnet test OrgManagmentApp.sln -c Release
+
+    - name: Run Super Linter
+      uses: github/super-linter@v4
+      env:
+        DEFAULT_BRANCH: kursach7
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VALIDATE_ALL_CODEBASE: true # Проверяет весь код
+        VALIDATE_CSHARP: true       # Включает проверку C#
+        VALIDATE_YAML: true         # Включает проверку YAML
+        VALIDATE_JSON: true         # Включает проверку JSON
+        VALIDATE_XML: true          # Включает проверку XML
