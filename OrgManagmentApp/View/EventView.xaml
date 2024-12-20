@@ -1,0 +1,128 @@
+﻿<Window x:Class="OrgManagmentApp.View.EventView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:OrgManagmentApp.View"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="450" Width="800">
+    <Grid Margin="20">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- Существующие элементы формы в левой колонке -->
+    <StackPanel Grid.Column="0">
+        <Label Content="Название:" />
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" Margin="0,5">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Validation.ErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <DockPanel LastChildFill="True">
+                                    <TextBlock Foreground="Red" DockPanel.Dock="Right" Text="{Binding Path=(Validation.Errors)[0].ErrorContent}" />
+                                    <AdornedElementPlaceholder/>
+                                </DockPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label Content="Дата:" />
+        <DatePicker SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+        <Label Content="Категория:" />
+        <ComboBox ItemsSource="{Binding Categories}" 
+                  SelectedItem="{Binding SelectedCategory}" 
+                  DisplayMemberPath="Name" 
+                  Margin="0,5"/>
+        <Label Content="Организатор:" />
+        <ComboBox ItemsSource="{Binding Organizers}" 
+                  SelectedItem="{Binding SelectedOrganizer}" 
+                  DisplayMemberPath="FirstName" 
+                  Margin="0,5"/>
+        <Label Content="Место проведения:" />
+        <ComboBox ItemsSource="{Binding Addresses}" 
+                  SelectedItem="{Binding SelectedAddress}"
+                  Margin="0,5">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Address}" />
+                        <TextBlock Text=" (Аудитория: " Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding VenueNumber}" />
+                        <TextBlock Text=", Вместимость: " />
+                        <TextBlock Text="{Binding Capacity}" />
+                        <TextBlock Text=")" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </StackPanel>
+
+    <!-- Секция уровней билетов в правой колонке -->
+    <StackPanel Grid.Column="1" Margin="20,0,0,0">
+        <GroupBox Header="Уровни билетов">
+            <StackPanel>
+                <!-- Список добавленных уровней -->
+                <DataGrid ItemsSource="{Binding SelectedTicketLevels}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          MaxHeight="200"
+                          Margin="0,0,0,10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Уровень" Binding="{Binding Level.Name}"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Удалить"
+                                            Command="{Binding DataContext.RemoveTicketLevelCommand, 
+                                                      RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                            CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Форма добавления нового уровня -->
+                <GroupBox Header="Добавить уровень билетов">
+                    <StackPanel Margin="5">
+                        <Label Content="Уровень:"/>
+                        <ComboBox ItemsSource="{Binding AvailableLevels}"
+                                  SelectedItem="{Binding SelectedLevel}"
+                                  DisplayMemberPath="Name"
+                                  Margin="0,0,0,5"/>
+
+                        <Label Content="Цена:"/>
+                        <TextBox Text="{Binding TicketPrice, UpdateSourceTrigger=PropertyChanged, 
+                                 ValidatesOnNotifyDataErrors=True}"
+                                 Margin="0,0,0,5"/>
+
+                        <Button Content="Добавить уровень"
+                                Command="{Binding AddTicketLevelCommand}"
+                                HorizontalAlignment="Right"
+                                Margin="0,5,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+
+    <Button Content="Сохранить" 
+            Command="{Binding SaveEventCommand}" 
+            Grid.Row="2" 
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Right" 
+            Margin="0,20,0,0" />
+</Grid>
+</Window>

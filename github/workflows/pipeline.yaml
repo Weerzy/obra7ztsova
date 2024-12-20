@@ -1,0 +1,34 @@
+name: kursach7
+
+on:
+  push:
+    branches:
+      - kursach7
+  pull_request:
+    branches:
+      - kursach7
+
+jobs:
+  CheckErrors:
+    runs-on: windows-latest
+
+    steps:
+    - name: Download Code
+      uses: actions/checkout@v2
+
+    - name: Download .Net
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Restore Nuget
+      run: nuget restore OrgManagmentApp.sln
+
+    - name: Build project
+      run: |
+        msbuild OrgManagmentApp.sln /p:Configuration=Release
+
+    - name: Code Analysis
+      run: |
+        msbuild OrgManagmentApp.sln /p:Configuration=Release /p:RunCodeAnalysis=true
+     
+    - name: Linter
+      uses: docker://github/super-linter:v2.1.0

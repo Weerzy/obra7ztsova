@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EA738D13-8E40-46CF-BF90-040FF22C87D9}|OrgManagmentApp\\OrgManagmentApp.csproj|c:\\users\\sirot\\onedrive\\desktop\\orgmanagmentapp\\orgmanagmentapp\\viewmodel\\userticketsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA738D13-8E40-46CF-BF90-040FF22C87D9}|OrgManagmentApp\\OrgManagmentApp.csproj|solutionrelative:orgmanagmentapp\\viewmodel\\userticketsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA738D13-8E40-46CF-BF90-040FF22C87D9}|OrgManagmentApp\\OrgManagmentApp.csproj|c:\\users\\sirot\\onedrive\\desktop\\orgmanagmentapp\\orgmanagmentapp\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA738D13-8E40-46CF-BF90-040FF22C87D9}|OrgManagmentApp\\OrgManagmentApp.csproj|solutionrelative:orgmanagmentapp\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA738D13-8E40-46CF-BF90-040FF22C87D9}|OrgManagmentApp\\OrgManagmentApp.csproj|c:\\users\\sirot\\onedrive\\desktop\\orgmanagmentapp\\orgmanagmentapp\\viewmodel\\ticketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA738D13-8E40-46CF-BF90-040FF22C87D9}|OrgManagmentApp\\OrgManagmentApp.csproj|solutionrelative:orgmanagmentapp\\viewmodel\\ticketviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f53-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserTicketsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\OrgManagmentApp\\ViewModel\\UserTicketsViewModel.cs",
+              "RelativeDocumentMoniker": "OrgManagmentApp\\ViewModel\\UserTicketsViewModel.cs",
+              "ToolTip": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\OrgManagmentApp\\ViewModel\\UserTicketsViewModel.cs",
+              "RelativeToolTip": "OrgManagmentApp\\ViewModel\\UserTicketsViewModel.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T09:16:07.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TicketService.cs",
+              "DocumentMoniker": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\OrgManagmentApp\\Services\\TicketService.cs",
+              "RelativeDocumentMoniker": "OrgManagmentApp\\Services\\TicketService.cs",
+              "ToolTip": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\OrgManagmentApp\\Services\\TicketService.cs",
+              "RelativeToolTip": "OrgManagmentApp\\Services\\TicketService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T09:17:26.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TicketViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\OrgManagmentApp\\ViewModel\\TicketViewModel.cs",
+              "RelativeDocumentMoniker": "OrgManagmentApp\\ViewModel\\TicketViewModel.cs",
+              "ToolTip": "C:\\Users\\sirot\\OneDrive\\Desktop\\OrgManagmentApp\\OrgManagmentApp\\ViewModel\\TicketViewModel.cs",
+              "RelativeToolTip": "OrgManagmentApp\\ViewModel\\TicketViewModel.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T09:15:48.148Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

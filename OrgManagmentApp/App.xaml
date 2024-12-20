@@ -1,0 +1,12 @@
+﻿<Application x:Class="OrgManagmentApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:OrgManagmentApp"
+             xmlns:converters="clr-namespace:OrgManagmentApp.converters"
+             StartupUri="./View/LoginView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:RoleVisibilityConverter x:Key="RoleVisibilityConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
