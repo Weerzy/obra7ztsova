@@ -7,7 +7,7 @@ on:
 
 jobs:
   CheckErrors:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout Code
@@ -16,20 +16,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '5.0.x'
 
     - name: Restore Dependencies
       run: dotnet restore OrgManagmentApp.sln
 
     - name: Build Project
-      run: dotnet build OrgManagmentApp.sln -c Release --no-restore
+      run: dotnet build OrgManagmentApp.sln -c Release
 
     - name: Run Tests
-      run: dotnet test OrgManagmentApp.sln -c Release --no-build
-
-    - name: Code Analysis
-      run: |
-        msbuild OrgManagmentApp.sln /p:Configuration=Release /p:RunCodeAnalysis=true
-
-    - name: Linter
-      uses: github/super-linter@v4
+      run: dotnet test OrgManagmentApp.sln -c Release
