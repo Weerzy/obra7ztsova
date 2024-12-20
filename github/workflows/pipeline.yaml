@@ -1,12 +1,8 @@
 name: kursach7
 
 on:
-  push:
-    branches:
-      - kursach7
-  pull_request:
-    branches:
-      - kursach7
+  push
+
 
 jobs:
   CheckErrors:
